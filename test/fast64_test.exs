@@ -70,8 +70,6 @@ defmodule Fast64Test do
     {time_encode2, _} = :timer.tc(fn -> Base.encode64(data2) end)
     {time_decode2, _} = :timer.tc(fn -> Base.decode64(encoded2) end)
     IO.inspect({time_encode2, time_decode2})
-    IO.inspect({time_encode2/time_encode, time_decode2/time_decode})
-
+    IO.inspect({time_encode2 / time_encode, time_decode2 / time_decode})
   end
-
 end

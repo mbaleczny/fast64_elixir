@@ -17,9 +17,10 @@ defmodule Fast64 do
   """
   @on_load :load_nif
 
-  app = Mix.Project.config[:app]
+  app = Mix.Project.config()[:app]
+
   def load_nif do
-    path = :filename.join(:code.priv_dir(unquote(app)), 'fast64')
+    path = :filename.join(:code.priv_dir(unquote(app)), ~c"fast64")
     :ok = :erlang.load_nif(path, 0)
   end
 
@@ -30,5 +31,4 @@ defmodule Fast64 do
   def encode64(_data) do
     raise "NIF Fast64.encode64/1 not implemented"
   end
-
 end
