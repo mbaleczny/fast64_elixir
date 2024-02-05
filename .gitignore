@@ -25,3 +25,6 @@ fast_64-*.tar
 *.iml
 
 .idea
+
+# Ignore any builds
+/priv/

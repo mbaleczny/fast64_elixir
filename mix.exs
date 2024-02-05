@@ -1,25 +1,17 @@
-defmodule Mix.Tasks.Compile.Fast64 do
-  def run(_) do
-    {result, _error_code} = System.cmd("make", ["priv/fast64.so"], stderr_to_stdout: true)
-    IO.binwrite(result)
-    :ok
-  end
-
-  def clean() do
-    System.cmd("rm", ["-f", "priv/fast64.so"])
-  end
-end
-
 defmodule Fast64.MixProject do
   use Mix.Project
+
+  @version "0.1.3"
 
   def project do
     [
       app: :fast64,
-      version: "0.1.3",
+      version: @version,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      compilers: [:fast64] ++ Mix.compilers(),
+      compilers: [:elixir_make] ++ Mix.compilers(),
+      make_targets: ["all"],
+      make_clean: ["clean"],
       description: description(),
       package: package(),
       deps: deps()
@@ -40,6 +32,7 @@ defmodule Fast64.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:elixir_make, "~> 0.7", runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
