@@ -56,7 +56,7 @@ defmodule Fast64Test do
     assert Fast64.decode64("aGVsbG8") == "hello"
   end
 
-  test "should decode performance" do
+  test "decode performance" do
     data = :binary.copy("0123456789", 1000)
     data2 = :binary.copy("0123456789", 10)
     encoded = Fast64.encode64(data)
@@ -69,7 +69,7 @@ defmodule Fast64Test do
 
     {time_encode2, _} = :timer.tc(fn -> Base.encode64(data2) end)
     {time_decode2, _} = :timer.tc(fn -> Base.decode64(encoded2) end)
+
     IO.inspect({time_encode2, time_decode2})
-    IO.inspect({time_encode2 / time_encode, time_decode2 / time_decode})
   end
 end
