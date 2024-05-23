@@ -17,10 +17,8 @@ defmodule Fast64 do
   """
   @on_load :load_nif
 
-  app = Mix.Project.config()[:app]
-
   def load_nif do
-    path = :filename.join(:code.priv_dir(unquote(app)), ~c"fast64")
+    path = :filename.join(:code.priv_dir(:fast64), ~c"fast64")
     :ok = :erlang.load_nif(path, 0)
   end
 
