@@ -15,7 +15,9 @@ defmodule Fast64 do
       "hello"
 
   """
-  @on_load :load_nif
+
+  @compile {:autoload, false}
+  @on_load {:load_nif, 0}
 
   def load_nif do
     path = :filename.join(:code.priv_dir(:fast64), ~c"fast64")
