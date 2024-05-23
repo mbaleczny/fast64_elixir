@@ -7,7 +7,7 @@ defmodule Fast64.MixProject do
     [
       app: :fast64,
       version: @version,
-      elixir: "~> 1.10",
+      elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       compilers: [:elixir_make] ++ Mix.compilers(),
       make_targets: ["all"],
