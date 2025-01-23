@@ -24,11 +24,6 @@ defmodule Fast64 do
     :ok = :erlang.load_nif(path, 0)
   end
 
-  def decode64(_data) do
-    raise "NIF Fast64.decode64/1 not implemented"
-  end
-
-  def encode64(_data) do
-    raise "NIF Fast64.encode64/1 not implemented"
-  end
+  def decode64(_data), do: exit(:nif_not_loaded)
+  def encode64(_data), do: exit(:nif_not_loaded)
 end
